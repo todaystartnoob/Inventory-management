@@ -36,7 +36,7 @@ th, td {
 
 button {
   padding: 6px 12px;
-  background-color: #007bff;
+  background-color: #26B5D7;
   color: white;
   border: none;
   border-radius: 4px;
@@ -58,7 +58,6 @@ button:disabled {
       <thead>
         <tr>
           <th>이름</th>
-          <th>단가</th>
           <th>소비자 가격</th>
           <th>재고</th>
           <th>작업</th>
@@ -72,20 +71,13 @@ button:disabled {
 
   <script>
     const goodsData = [
-  { id: 1, cost: 2500, price: 3500, name: "키링 자유형 1번 이미지", stock: 40 },
-  { id: 2, cost: 2000, price: 3500, name: "키캡 1번 이미지", stock: 15 },
-  { id: 3, cost: 2000, price: 3500, name: "키캡 2번 아미지", stock: 15 },
-  { id: 4, cost: 1012, price: 2500, name: "판 스티커 1번 이미지", stock: 100 },
-  { id: 5, cost: 259, price: 2500, name: "원형 스티커 1번 이미지", stock: 200 },
-  { id: 6, cost: 2500, price: 4500, name: "마우스 패드 1번 이미지", stock: 35 },
-  { id: 6, cost: 2500, price: 4500, name: "마우스 패드 2번 이미지", stock: 35 },
-  { id: 7, cost: 7530, price: 1, name: "마이쮸", stock: 1 },
-  { id: 8, cost: 11670, price: 1, name: "abc 초콜릿", stock: 1 },
-  { id: 9, cost: 15900, price: 0, name: "종이백", stock: 1 },
-  { id: 10, cost: 1000, price: 0, name: "opp 봉투", stock: 3 },
-  { id: 11, cost: 1000, price: 0, name: "opp 봉투", stock: 1 },
-  { id: 12, cost: 1000, price: 0, name: "opp 봉투", stock: 3 },
-  { id: 13, cost: 1000, price: 0, name: "opp 봉투", stock: 1 },
+  { id: 1, price: 3500, name: "마우스 패드", stock: 10 },
+  { id: 2, price: 3500, name: "키캡", stock: 11 },
+  { id: 3, price: 3500, name: "판스티커", stock: 31 },
+  { id: 4, price: 2500, name: "아크릴 키링", stock: 21 },
+  { id: 5, price: 2500, name: "set1(마우스 패드, 키캡)", stock: 10 },
+  { id: 6, price: 4500, name: "set2(판스티커, 아크릴 키링)", stock: 10 },
+  { id: 7, price: 4500, name: "set3(마우스 패드, 키캡, 판스티커, 아크릴 키링)", stock: 5 }
 ];
 
 const goodsList = document.getElementById("goods-list");
@@ -97,11 +89,10 @@ function renderTable() {
 
     row.innerHTML = `
       <td>${item.name}</td>
-      <td>${item.cost}</td>
       <td>${item.price}</td>
       <td id="stock-${item.id}">${item.stock}</td>
       <td>
-        <button onclick="decreaseStock(${item.id})" ${item.stock === 0 ? "disabled" : ""}>-1 감소</button>
+        <button onclick="decreaseStock(${item.id})" ${item.stock === 0 ? "disabled" : ""}>판매</button>
       </td>
     `;
 
